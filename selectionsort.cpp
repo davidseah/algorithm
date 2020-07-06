@@ -4,25 +4,25 @@
 using namespace std;
 
 
-void bubblesort(vector<int> &A)
+void selectionsort(vector<int> &A)
 {
+  
   for(int i = 0; i < A.size(); ++i)
   {
-    bool flag = false;
-    for(int j = 0; j < A.size()-i-1;++j)
+    
+    //find the smallest number
+    int smallestnumber = i;
+    for(int j = i + 1; j < A.size(); ++j)
     {
-      if(A[j] > A[j+1])
-      {
-        swap(A[j], A[j+1]);
-        flag = true;
-      }
+        if(A[smallestnumber] > A[j])
+        {
+          smallestnumber = j;
+        }
     }
     
-    if(flag == false)
-    {
-      break;
-    }
+    swap(A[smallestnumber], A[i]);
   }
+  
 }
 
 
@@ -31,8 +31,7 @@ int main() {
  
   
   vector<int> A {10, 8, 2, 4, 5, 3, 12, 21, 25};
-  bubblesort(A);
-  
+  selectionsort(A);
   
   for(auto i : A)
   {
