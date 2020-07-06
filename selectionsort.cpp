@@ -1,42 +1,46 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
-void selectionsort(vector<int>&A)
+
+void bubblesort(vector<int> &A)
 {
-  
   for(int i = 0; i < A.size(); ++i)
   {
-    
-    int largestnumber = 0;
-    //find the largest number and place it at the back
-    for(int j = 0; j < A.size()-i; ++j)
+    bool flag = false;
+    for(int j = 0; j < A.size()-i-1;++j)
     {
-      if(A[largestnumber] < A[j])
+      if(A[j] > A[j+1])
       {
-        
-        largestnumber = j;
+        swap(A[j], A[j+1]);
+        flag = true;
       }
     }
-         
-    swap(A[largestnumber], A[A.size()-i-1]);
+    
+    if(flag == false)
+    {
+      break;
+    }
   }
-  
 }
 
 
 // To execute C++, please define "int main()"
 int main() {
-  vector<int> A {10, 20, 1, 3, 7, 2, 9, 8, 4, 20, 15 };
+ 
   
-  selectionsort(A);
+  vector<int> A {10, 8, 2, 4, 5, 3, 12, 21, 25};
+  bubblesort(A);
+  
   
   for(auto i : A)
   {
     
-    cout << i << " ";  
+    cout << i << " ";
+    
   }
+  
   
   return 0;
 }
-
